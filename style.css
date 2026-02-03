@@ -1,135 +1,88 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
 :root {
-    --naver-green: #03C75A;
-    --bg-color: #f5f6f7;
-    --card-bg: #ffffff;
-    --card-border: #e0e0e0;
-    --text-color: #202020;
-    --text-color-secondary: #777;
-    --shadow-color: rgba(0, 0, 0, 0.05);
-    --btn-color: #ffffff;
-    --toggle-btn-bg: #ffffff;
-    --toggle-btn-color: #202020;
-}
-
-body.dark-mode {
-    --bg-color: #1a1a1a;
-    --card-bg: #242424;
-    --card-border: #333;
-    --text-color: #f0f0f0;
-    --text-color-secondary: #aaa;
-    --shadow-color: rgba(0, 0, 0, 0.2);
-    --toggle-btn-bg: #2c2c2c;
-    --toggle-btn-color: #f0f0f0;
+    --primary-color: #03C75A;
+    --bg-light: #f8f9fa;
+    --bg-dark: #121212;
+    --card-bg-light: #ffffff;
+    --card-bg-dark: #1e1e1e;
+    --text-light: #212529;
+    --text-dark: #e9ecef;
+    --border-light: #dee2e6;
+    --border-dark: #343a40;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-dark: rgba(0, 0, 0, 0.3);
 }
 
 body {
-    font-family: 'Poppins', sans-serif, -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", helvetica, "Apple SD Gothic Neo", sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 2rem;
-    background-color: var(--bg-color);
-    transition: background-color 0.3s ease;
-    overflow-y: auto;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    width: 100%;
-    max-width: 1200px;
+body.dark-mode {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
 }
 
-.lotto-machine,
-.contact-form-container {
-    text-align: center;
-    background: var(--card-bg);
-    padding: 2.5rem;
-    border-radius: 8px;
-    border: 1px solid var(--card-border);
-    box-shadow: 0 4px 12px var(--shadow-color);
+.card {
+    border: 1px solid var(--border-light);
+    background-color: var(--card-bg-light);
+    box-shadow: 0 0.5rem 1rem var(--shadow-light);
     transition: all 0.3s ease;
-    flex: 1;
-    min-width: 320px;
-    max-width: 500px;
 }
 
-.lotto-machine:hover,
-.contact-form-container:hover {
+body.dark-mode .card {
+    border-color: var(--border-dark);
+    background-color: var(--card-bg-dark);
+    box-shadow: 0 0.5rem 1rem var(--shadow-dark);
+}
+
+.card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px var(--shadow-color);
 }
 
-h1, h2 {
-    margin-bottom: 2rem;
-    font-size: 1.8em;
+.card-title {
     font-weight: 700;
-    color: var(--text-color);
-    transition: color 0.3s ease;
+    color: inherit;
 }
 
 .number-display {
     display: flex;
     justify-content: center;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .number {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: #ffffff;
-    border: 2px solid var(--naver-green);
-    color: var(--naver-green);
+    background-color: var(--primary-color);
+    color: white;
     font-size: 1.8em;
     font-weight: 600;
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: translateY(20px) scale(0);
-    animation: pop-in 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-    transition: all 0.3s ease;
-}
-
-body.dark-mode .number {
-    background: var(--card-bg);
+    animation: pop-in 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    transform: scale(0);
 }
 
 @keyframes pop-in {
     to {
-        transform: translateY(0) scale(1);
+        transform: scale(1);
     }
 }
 
-#generator-btn,
-#partnership-form button[type="submit"] {
-    background-color: var(--naver-green);
-    color: var(--btn-color);
-    border: 1px solid var(--naver-green);
-    padding: 0.8rem 2rem;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1.1em;
-    font-weight: 600;
-    margin-top: 1rem;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: all 0.2s ease-in-out;
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
 }
 
-#generator-btn:hover,
-#partnership-form button[type="submit"]:hover {
+.btn-primary:hover {
     filter: brightness(1.1);
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
 }
 
 .theme-switcher {
@@ -140,95 +93,41 @@ body.dark-mode .number {
 }
 
 #theme-toggle-btn {
-    background: var(--toggle-btn-bg);
-    color: var(--toggle-btn-color);
-    border: 1px solid var(--card-border);
-    padding: 0.6rem 1.2rem;
-    cursor: pointer;
-    border-radius: 50px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.9em;
-    font-weight: 600;
-    box-shadow: 0 2px 10px var(--shadow-color);
-    transition: all 0.3s ease;
+    background-color: var(--card-bg-light);
+    color: var(--text-light);
+    border: 1px solid var(--border-light);
 }
 
-#theme-toggle-btn:hover {
-    transform: scale(1.05);
+body.dark-mode #theme-toggle-btn {
+    background-color: var(--card-bg-dark);
+    color: var(--text-dark);
+    border-color: var(--border-dark);
 }
 
-/* Contact Form Specific Styles */
-#partnership-form .formspree-note {
-    font-size: 0.8em;
-    color: var(--text-color-secondary);
-    margin-bottom: 1.5rem;
-    transition: color 0.3s ease;
+.form-control {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    border-color: var(--border-light);
 }
 
-#partnership-form .formspree-note a {
-    color: var(--naver-green);
-    text-decoration: none;
+body.dark-mode .form-control {
+    background-color: #2c2c2c;
+    color: var(--text-dark);
+    border-color: var(--border-dark);
 }
 
-#partnership-form .form-group {
-    margin-bottom: 1.5rem;
-    text-align: left;
+.form-control:focus {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(3, 199, 90, 0.25);
 }
 
-#partnership-form label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: var(--text-color);
-    transition: color 0.3s ease;
+body.dark-mode .form-control:focus {
+    background-color: #2c2c2c;
+    color: var(--text-dark);
 }
 
-#partnership-form input[type="text"],
-#partnership-form input[type="email"],
-#partnership-form textarea {
-    width: 100%;
-    padding: 0.8rem 1rem;
-    border: 1px solid #dadada;
-    border-radius: 4px;
-    background: #fff;
-    color: #333;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1em;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
-}
-
-body.dark-mode #partnership-form input[type="text"],
-body.dark-mode #partnership-form input[type="email"],
-body.dark-mode #partnership-form textarea {
-    background: #333;
-    border-color: #555;
-    color: #f0f0f0;
-}
-
-#partnership-form input[type="text"]:focus,
-#partnership-form input[type="email"]:focus,
-#partnership-form textarea:focus {
-    outline: none;
-    border-color: var(--naver-green);
-    box-shadow: 0 0 0 2px rgba(3, 199, 90, 0.2);
-}
-
-#partnership-form textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
-#form-status {
-    margin-top: 1.5rem;
-    font-size: 0.9em;
-    min-height: 1.2em;
-    transition: color 0.3s ease;
-}
-
-@media (max-width: 992px) {
-    .container {
-        flex-direction: column;
-        align-items: center;
-    }
+.formspree-note a {
+    color: var(--primary-color);
 }
