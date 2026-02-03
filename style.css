@@ -1,29 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
 :root {
-    --bg-gradient: linear-gradient(to right top, #6d327c, #485DA6, #00a1ba, #00BF98, #36C486);
-    --machine-bg: rgba(255, 255, 255, 0.3);
-    --machine-border: rgba(255, 255, 255, 0.5);
-    --text-color: #222;
+    --bg-gradient: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
+    --card-bg: rgba(255, 255, 255, 0.1);
+    --card-border: rgba(255, 255, 255, 0.25);
+    --text-color: #f0f0f0;
     --shadow-color: rgba(0, 0, 0, 0.1);
-    --number-bg: linear-gradient(145deg, #4caf50, #66bb6a);
-    --number-color: white;
-    --btn-bg: linear-gradient(145deg, #008CBA, #00a1d9);
-    --btn-color: white;
-    --toggle-btn-bg: rgba(255, 255, 255, 0.5);
-    --toggle-btn-color: #333;
+    --number-bg: linear-gradient(145deg, #f7971e, #ffd200);
+    --number-color: #333;
+    --btn-bg: linear-gradient(145deg, #f7971e, #ffd200);
+    --btn-color: #333;
+    --btn-shadow-color: rgba(247, 151, 30, 0.4);
+    --toggle-btn-bg: rgba(255, 255, 255, 0.2);
+    --toggle-btn-color: #f0f0f0;
+    --input-bg: rgba(255, 255, 255, 0.05);
+    --input-border: rgba(255, 255, 255, 0.2);
+    --input-focus-border: #f7971e;
 }
 
 body.dark-mode {
-    --bg-gradient: linear-gradient(to right top, #0f0c29, #302b63, #24243e);
-    --machine-bg: rgba(0, 0, 0, 0.2);
-    --machine-border: rgba(255, 255, 255, 0.2);
-    --text-color: #f0f0f0;
+    --bg-gradient: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+    --card-bg: rgba(36, 41, 47, 0.5);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --text-color: #c9d1d9;
     --shadow-color: rgba(0, 0, 0, 0.3);
-    --number-bg: linear-gradient(145deg, #454545, #5a5a5a);
+    --number-bg: linear-gradient(145deg, #1f6feb, #2d96ff);
     --number-color: #f0f0f0;
-    --btn-bg: linear-gradient(145deg, #2c2c2c, #3f3f3f);
+    --btn-bg: linear-gradient(145deg, #1f6feb, #2d96ff);
     --btn-color: #f0f0f0;
-    --toggle-btn-bg: rgba(0, 0, 0, 0.4);
-    --toggle-btn-color: #f0f0f0;
+    --btn-shadow-color: rgba(31, 111, 235, 0.4);
+    --toggle-btn-bg: rgba(0, 0, 0, 0.3);
+    --toggle-btn-color: #c9d1d9;
+    --input-bg: rgba(0, 0, 0, 0.2);
+    --input-border: rgba(255, 255, 255, 0.1);
+    --input-focus-border: #2d96ff;
 }
 
 body {
@@ -32,28 +42,53 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    padding: 2rem;
     background-image: var(--bg-gradient);
-    transition: background-color 0.5s ease;
-    overflow: hidden;
+    background-size: 200% 200%;
+    animation: gradient-animation 10s ease infinite;
+    transition: background 0.5s ease;
+    overflow-y: auto;
 }
 
-.lotto-machine {
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.lotto-machine,
+.contact-form-container {
     text-align: center;
-    background: var(--machine-bg);
-    padding: 40px;
-    border-radius: 25px;
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 20px;
     box-shadow: 0 8px 32px 0 var(--shadow-color);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--machine-border);
-    transition: background 0.5s ease, border 0.5s ease;
-    width: 90%;
-    max-width: 550px;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--card-border);
+    transition: background 0.5s ease, border 0.5s ease, transform 0.3s ease;
+    flex: 1;
+    min-width: 320px;
+    max-width: 500px;
 }
 
-h1 {
-    margin-bottom: 30px;
-    font-size: 2.3em;
+.lotto-machine:hover,
+.contact-form-container:hover {
+    transform: translateY(-5px);
+}
+
+h1, h2 {
+    margin-bottom: 2rem;
+    font-size: 2.2em;
     font-weight: 700;
     color: var(--text-color);
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
@@ -63,18 +98,18 @@ h1 {
 .number-display {
     display: flex;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 2rem;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 1rem;
 }
 
 .number {
-    width: 65px;
-    height: 65px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background: var(--number-bg);
     color: var(--number-color);
-    font-size: 1.9em;
+    font-size: 1.8em;
     font-weight: 600;
     display: flex;
     justify-content: center;
@@ -92,44 +127,48 @@ h1 {
     }
 }
 
-#generator-btn {
+#generator-btn,
+#partnership-form button[type="submit"] {
     background: var(--btn-bg);
     color: var(--btn-color);
     border: none;
-    padding: 16px 35px;
+    padding: 1rem 2.5rem;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 1.25em;
+    font-size: 1.1em;
     font-weight: 600;
-    margin-top: 20px;
+    margin-top: 1rem;
     cursor: pointer;
     border-radius: 50px;
     box-shadow: 0 5px 20px -5px var(--btn-shadow-color);
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-#generator-btn:hover {
-    transform: translateY(-3px);
+#generator-btn:hover,
+#partnership-form button[type="submit"]:hover {
+    transform: translateY(-4px) scale(1.05);
     box-shadow: 0 8px 25px -5px var(--btn-shadow-color);
 }
 
-#generator-btn:active {
-    transform: translateY(0);
+#generator-btn:active,
+#partnership-form button[type="submit"]:active {
+    transform: translateY(0) scale(1);
     box-shadow: 0 5px 20px -5px var(--btn-shadow-color);
 }
 
 .theme-switcher {
-    position: absolute;
-    top: 25px;
-    right: 25px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
 }
 
 #theme-toggle-btn {
     background: var(--toggle-btn-bg);
     color: var(--toggle-btn-color);
-    border: 1px solid var(--machine-border);
-    padding: 10px 20px;
+    border: 1px solid var(--card-border);
+    padding: 0.75rem 1.5rem;
     cursor: pointer;
     border-radius: 50px;
     font-family: 'Poppins', sans-serif;
@@ -142,39 +181,16 @@ h1 {
 }
 
 #theme-toggle-btn:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
-/* Contact Form Styles */
-.contact-form-container {
-    background: var(--machine-bg);
-    padding: 30px;
-    border-radius: 25px;
-    box-shadow: 0 8px 32px 0 var(--shadow-color);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--machine-border);
-    transition: background 0.5s ease, border 0.5s ease;
-    width: 90%;
-    max-width: 550px;
-    margin-top: 40px; /* Space between lotto machine and form */
-    text-align: center;
-}
 
-.contact-form-container h2 {
-    margin-bottom: 25px;
-    font-size: 2em;
-    font-weight: 700;
-    color: var(--text-color);
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-    transition: color 0.5s ease;
-}
-
+/* Contact Form Specific Styles */
 #partnership-form .formspree-note {
-    font-size: 0.9em;
+    font-size: 0.8em;
     color: var(--text-color);
-    margin-bottom: 20px;
-    opacity: 0.8;
+    margin-bottom: 1.5rem;
+    opacity: 0.7;
     transition: color 0.5s ease;
 }
 
@@ -185,75 +201,58 @@ h1 {
 }
 
 #partnership-form .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem;
     text-align: left;
 }
 
 #partnership-form label {
     display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
     color: var(--text-color);
     transition: color 0.5s ease;
+    opacity: 0.9;
 }
 
 #partnership-form input[type="text"],
 #partnership-form input[type="email"],
 #partnership-form textarea {
-    width: calc(100% - 20px); /* Adjust for padding */
-    padding: 12px;
-    border: 1px solid var(--machine-border);
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--input-border);
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--input-bg);
     color: var(--text-color);
     font-family: 'Poppins', sans-serif;
     font-size: 1em;
     box-shadow: inset 0 1px 3px var(--shadow-color);
     transition: all 0.3s ease;
+    box-sizing: border-box;
 }
 
 #partnership-form input[type="text"]:focus,
 #partnership-form input[type="email"]:focus,
 #partnership-form textarea:focus {
     outline: none;
-    border-color: var(--btn-bg); /* Use button color for focus highlight */
-    box-shadow: 0 0 0 3px rgba(0, 140, 186, 0.3); /* Custom focus ring */
+    border-color: var(--input-focus-border);
+    box-shadow: 0 0 0 3px rgba(var(--input-focus-border), 0.3);
 }
 
 #partnership-form textarea {
     resize: vertical;
-}
-
-#partnership-form button[type="submit"] {
-    background: var(--btn-bg);
-    color: var(--btn-color);
-    border: none;
-    padding: 14px 30px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1.1em;
-    font-weight: 600;
-    margin-top: 20px;
-    cursor: pointer;
-    border-radius: 50px;
-    box-shadow: 0 5px 20px -5px var(--shadow-color);
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-#partnership-form button[type="submit"]:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px -5px var(--shadow-color);
-}
-
-#partnership-form button[type="submit"]:active {
-    transform: translateY(0);
-    box-shadow: 0 5px 20px -5px var(--shadow-color);
+    min-height: 120px;
 }
 
 #form-status {
-    margin-top: 20px;
-    font-size: 1em;
-    color: var(--text-color);
+    margin-top: 1.5rem;
+    font-size: 0.9em;
+    min-height: 1.2em;
     transition: color 0.5s ease;
+}
+
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
 }
