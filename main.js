@@ -41,3 +41,42 @@ function generateLottoNumbers() {
 
 // Apply the theme when the script loads
 applySavedTheme();
+
+// Formspree form submission handling
+const partnershipForm = document.getElementById('partnership-form');
+const formStatus = document.getElementById('form-status');
+
+if (partnershipForm) {
+    partnershipForm.addEventListener('submit', async (event) => {
+        event.preventDefault(); // Prevent default form submission
+
+        const formData = new FormData(partnershipForm);
+        try {
+            const response = await fetch(partnershipForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                formStatus.textContent = '문의가 성공적으로 접수되었습니다!';
+                formStatus.style.color = 'green';
+                partnershipForm.reset(); // Clear the form
+            } else {
+                const data = await response.json();
+                if (data.errors) {
+                    formStatus.textContent = data.errors.map(error => error.message).join(', ');
+                } else {
+                    formStatus.textContent = '문의 접수 중 오류가 발생했습니다. 다시 시도해주세요.';
+                }
+                formStatus.style.color = 'red';
+            }
+        } catch (error) {
+            formStatus.textContent = '네트워크 오류가 발생했습니다. 인터넷 연결을 확인해주세요.';
+            formStatus.style.color = 'red';
+            console.error('Form submission error:', error);
+        }
+    });
+}
