@@ -92,26 +92,14 @@ body.dark-mode .card:hover {
     opacity: 0; /* Start with opacity 0 to be animated by JS */
 }
 
-@keyframes pop-in {
-    to {
-        transform: scale(1);
-    }
-}
-
-@keyframes bounce-in-rotate {
+@keyframes fade-in-scale-up {
     0% {
         opacity: 0;
-        transform: translateY(-200%) scale(0.5) rotate(-180deg);
-    }
-    60% {
-        opacity: 1;
-        transform: translateY(10%) scale(1.1) rotate(10deg);
-    }
-    80% {
-        transform: translateY(-5%) scale(0.95) rotate(-5deg);
+        transform: scale(0.8);
     }
     100% {
-        transform: translateY(0) scale(1) rotate(0deg);
+        opacity: 1;
+        transform: scale(1);
     }
 }
 
