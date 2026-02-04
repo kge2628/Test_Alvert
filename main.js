@@ -36,6 +36,20 @@ generatorBtn.addEventListener('click', () => {
             const numberElement = document.createElement('div');
             numberElement.classList.add('number');
             numberElement.textContent = number;
+
+            // Add color classes based on number ranges
+            if (number >= 1 && number <= 10) {
+                numberElement.classList.add('yellow-ball');
+            } else if (number >= 11 && number <= 20) {
+                numberElement.classList.add('blue-ball');
+            } else if (number >= 21 && number <= 30) {
+                numberElement.classList.add('red-ball');
+            } else if (number >= 31 && number <= 40) {
+                numberElement.classList.add('gray-ball');
+            } else if (number >= 41 && number <= 45) {
+                numberElement.classList.add('green-ball');
+            }
+
             numberDisplay.appendChild(numberElement);
             // Trigger the animation by adding the class after appending
             // Use requestAnimationFrame to ensure the element is rendered before adding the class

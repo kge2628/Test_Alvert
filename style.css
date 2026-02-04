@@ -194,3 +194,24 @@ body.dark-mode .form-control:focus {
 .formspree-note a:hover {
     color: var(--primary-color);
 }
+
+/* Ball color styles */
+.number.yellow-ball {
+    background: linear-gradient(145deg, #ffeb3b, #fbc02d); /* Yellow */
+}
+
+.number.blue-ball {
+    background: linear-gradient(145deg, #2196f3, #1976d2); /* Blue */
+}
+
+.number.red-ball {
+    background: linear-gradient(145deg, #f44336, #d32f2f); /* Red */
+}
+
+.number.gray-ball {
+    background: linear-gradient(145deg, #9e9e9e, #616161); /* Gray */
+}
+
+.number.green-ball {
+    background: linear-gradient(145deg, #4caf50, #388e3c); /* Green */
+}
