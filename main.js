@@ -27,7 +27,12 @@ generatorBtn.addEventListener('click', () => {
             numberElement.classList.add('number');
             numberElement.textContent = number;
             numberDisplay.appendChild(numberElement);
-        }, index * 200);
+            // Trigger the animation by adding the class after appending
+            // Use requestAnimationFrame to ensure the element is rendered before adding the class
+            requestAnimationFrame(() => {
+                numberElement.style.animation = `bounce-in-rotate 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards`;
+            });
+        }, index * 150); // Slightly faster staggering
     });
 });
 
