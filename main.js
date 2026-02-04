@@ -9,6 +9,16 @@ function applySavedTheme() {
     if (isDarkMode) {
         body.classList.add('dark-mode');
     }
+    updateThemeToggleButtonText();
+}
+
+// Function to update the theme toggle button text
+function updateThemeToggleButtonText() {
+    if (body.classList.contains('dark-mode')) {
+        themeToggleBtn.textContent = '다크모드';
+    } else {
+        themeToggleBtn.textContent = '라이트모드';
+    }
 }
 
 // Event listener for the theme toggle button
@@ -16,6 +26,7 @@ themeToggleBtn.addEventListener('click', () => {
     body.classList.toggle('dark-mode');
     // Save the preference to localStorage
     localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
+    updateThemeToggleButtonText(); // Update button text after toggling theme
 });
 
 generatorBtn.addEventListener('click', () => {
