@@ -14,12 +14,11 @@ function applySavedTheme() {
 
 // Function to update the theme toggle button text
 function updateThemeToggleButtonText() {
-    if (body.classList.contains('dark-mode')) {
-        themeToggleBtn.textContent = '다크모드';
-    } else {
-        themeToggleBtn.textContent = '라이트모드';
-    }
-}
+            if (body.classList.contains('dark-mode')) {
+                themeToggleBtn.textContent = '라이트모드';
+            } else {
+                themeToggleBtn.textContent = '다크모드';
+            }}
 
 // Event listener for the theme toggle button
 themeToggleBtn.addEventListener('click', () => {
